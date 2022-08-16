@@ -25,21 +25,16 @@ public class UsuarioSrv implements UsuarioImpl {
 
     @Override
     public Usuario findById(Integer Id) {
-        return null;
+        return dao.findById(Id);
     }
 
     @Override
     public Usuario save(Usuario usuario) {
-        usuario.getPersonaIdpersona();
-
-        System.out.println( usuario.getPersonaIdpersona());
-
         return dao.save(usuario);
-
     }
 
     @Override
     public Usuario update(Usuario usuario) {
-        return null;
+        return dao.save(usuario);
     }
 }

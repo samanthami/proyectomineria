@@ -35,5 +35,8 @@ public class PersonaCtrl {
         Persona per1 = personasrv.findById(id);
         return personasrv.save(per1);
     }
-
+    @GetMapping(value = "/", produces = "application/json")
+    public List<Persona> findAll1() {
+        return personasrv.findAll();
+    }
 }

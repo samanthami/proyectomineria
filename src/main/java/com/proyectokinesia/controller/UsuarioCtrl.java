@@ -1,11 +1,9 @@
 package com.proyectokinesia.controller;
 
+import com.proyectokinesia.entidad.Persona;
 import com.proyectokinesia.entidad.Usuario;
 import com.proyectokinesia.service.UsuarioSrv;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,4 +26,9 @@ public class UsuarioCtrl {
         return usuarioSrv.save(usuario);
     }
 
+    @PutMapping(value = "/updateUsuario/{id}")
+    public Usuario updateUsuario(@PathVariable("id")Integer id, @RequestBody Usuario usuario){
+        Usuario user = usuarioSrv.findById(id);
+        return usuarioSrv.save(user);
+    }
 }
