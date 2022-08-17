@@ -1,18 +1,15 @@
 package com.proyectokinesia.entidad;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "persona")
-@Data
-@NoArgsConstructor
 public class Persona {
     @Id
     @Column(name = "idpersona", nullable = false)
-    public Integer id;
+    private Integer id;
 
     @Column(name = "nombre", nullable = false, length = 45)
     private String nombre;
@@ -28,6 +25,18 @@ public class Persona {
 
     @Column(name = "cedula", nullable = false, length = 45)
     private String cedula;
+
+    @JsonIgnore
+    @OneToOne(fetch = FetchType.EAGER, mappedBy = "personaIdpersona")
+    private Usuario usuarios;
+
+    public Usuario getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(Usuario usuarios) {
+        this.usuarios = usuarios;
+    }
 
     public String getCedula() {
         return cedula;

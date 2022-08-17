@@ -26,7 +26,7 @@ public class Personasrv  implements PersonaImpl {
     }
 
     @Override
-    public Persona findById(Integer Id) {
+    public Persona findById(Persona Id) {
         return personaDAO.findById(Id);
     }
 

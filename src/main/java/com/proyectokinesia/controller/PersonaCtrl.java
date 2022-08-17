@@ -31,7 +31,7 @@ public class PersonaCtrl {
     }
 
     @PutMapping(value = "/updatePersona/{id}")
-    public Persona updatePersona(@PathVariable("id")Integer id, @RequestBody Persona persona){
+    public Persona updatePersona(@PathVariable("id") Persona id, @RequestBody Persona persona){
         Persona per1 = personasrv.findById(id);
         return personasrv.save(per1);
     }

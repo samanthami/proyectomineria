@@ -1,10 +1,10 @@
 package com.proyectokinesia.service;
 
 
+import com.proyectokinesia.entidad.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.proyectokinesia.dao.UsuarioDao;
-import com.proyectokinesia.entidad.Usuario;
 import com.proyectokinesia.service.impl.UsuarioImpl;
 
 import java.util.List;
@@ -20,7 +20,7 @@ public class UsuarioSrv implements UsuarioImpl {
 
     @Override
     public List<Usuario> find() {
-        return  dao.findAll();
+        return dao.findAll();
     }
 
     @Override
@@ -36,5 +36,16 @@ public class UsuarioSrv implements UsuarioImpl {
     @Override
     public Usuario update(Usuario usuario) {
         return dao.save(usuario);
+    }
+
+
+    public Usuario estado(Integer Id) {
+        Usuario usr = dao.findById(Id);
+        if (usr.getEstado() == 1){
+            usr.setEstado(0);
+        }else{
+            usr.setEstado(1);
+        }
+        return dao.save(usr);
     }
 }

@@ -28,6 +28,12 @@ dependencies {
     implementation group: 'com.zaxxer', name: 'HikariCP', version: '5.0.1'
     implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.29'
     implementation group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.36'
+    // https://mvnrepository.com/artifact/com.vladmihalcea/hibernate-types-52
+    //implementation group: 'com.vladmihalcea', name: 'hibernate-types-52', version: '2.17.3'
+    // https://mvnrepository.com/artifact/org.springframework/spring-webmvc
+    implementation group: 'org.springframework', name: 'spring-webmvc', version: '5.3.21'
+    // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
+   // implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.13.3'
 }
 gradle.taskGraph.whenReady {
     taskGraph ->

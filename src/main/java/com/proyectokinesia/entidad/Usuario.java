@@ -1,17 +1,24 @@
 package com.proyectokinesia.entidad;
 
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
+import org.hibernate.annotations.TypeDef;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "usuario")
-@Data
 @NoArgsConstructor
-public class Usuario implements java.io.Serializable {
+@AllArgsConstructor
+@JsonDeserialize(as = Usuario.class)
+public class Usuario implements Serializable {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idusuario", nullable = false)
     private Integer id;
 
@@ -24,9 +31,10 @@ public class Usuario implements java.io.Serializable {
     @Column(name = "estado", nullable = false)
     private Integer estado;
 
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
+
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "persona_idpersona", nullable = false)
-    public Persona personaIdpersona;
+    private Persona personaIdpersona;
 
     public Persona getPersonaIdpersona() {
         return personaIdpersona;
