@@ -11,7 +11,7 @@ public interface UsuarioImpl {
 
     Usuario save(Usuario usuario);
 
-    Usuario update(Usuario usuario);
+    void update(Usuario usuario);
 
 
 }

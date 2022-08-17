@@ -8,9 +8,9 @@ public interface PersonaImpl {
 
     List<Persona> findAll();
     List<Persona> findCedula(String cedula);
-    Persona findById(Persona Id);
+    Persona findById(Integer Id);
     Persona save(Persona persona);
-    Persona update(Persona persona);
+    void update(Persona persona);
 
 
 }

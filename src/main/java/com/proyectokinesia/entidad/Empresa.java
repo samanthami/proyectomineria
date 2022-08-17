@@ -1,24 +1,67 @@
 package com.proyectokinesia.entidad;
 
-import javax.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.LinkedHashSet;
+import java.util.Set;
+
+
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "empresa")
-public class Empresa {
+public class Empresa implements Serializable {
+
     @Id
-    @Column(name = "idEmpresas", nullable = false)
+    @Column(name = "idempresas", nullable = false)
     private Integer id;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "persona_idpersona")
-    private Persona personaIdpersona;
 
-    public Persona getPersonaIdpersona() {
-        return personaIdpersona;
+    private String nombreempresa;
+
+    private String telefono;
+
+    private Boolean estado;
+
+    
+   /* @OneToMany(mappedBy = "empresa")
+    public Set<Persona> personas;*/
+
+    /*public Set<Persona> getPersonas() {
+        return personas;
+    }*/
+    @Column(name = "nombreempresa")
+    public String getNombreempresa() {
+        return nombreempresa;
     }
 
-    public void setPersonaIdpersona(Persona personaIdpersona) {
-        this.personaIdpersona = personaIdpersona;
+    public void setNombreempresa(String nombreempresa) {
+        this.nombreempresa = nombreempresa;
     }
+    @Column(name = "telefono")
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+    @Column(name = "estado")
+    public Boolean getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Boolean estado) {
+        this.estado = estado;
+    }
+
+    /*public void setPersonas(Set<Persona> personas) {
+        this.personas = personas;
+    }*/
 
     public Integer getId() {
         return id;
@@ -28,5 +71,5 @@ public class Empresa {
         this.id = id;
     }
 
-    //TODO Reverse Engineering! Migrate other columns to the entity
+
 }

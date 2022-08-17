@@ -1,43 +1,59 @@
 package com.proyectokinesia.entidad;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "persona")
-public class Persona {
+public class Persona  {
+
     @Id
     @Column(name = "idpersona", nullable = false)
     private Integer id;
 
-    @Column(name = "nombre", nullable = false, length = 45)
     private String nombre;
 
-    @Column(name = "apellido", length = 45)
     private String apellido;
 
-    @Column(name = "telefono", length = 45)
     private String telefono;
 
-    @Column(name = "rol", nullable = false, length = 45)
     private String rol;
 
-    @Column(name = "cedula", nullable = false, length = 45)
     private String cedula;
 
-    @JsonIgnore
-    @OneToOne(fetch = FetchType.EAGER, mappedBy = "personaIdpersona")
-    private Usuario usuarios;
+    @ManyToOne
+    @JoinColumn(name = "empresa_idempresas", nullable = true)
+    public Empresa empresa;
 
-    public Usuario getUsuarios() {
-        return usuarios;
+    @ManyToOne
+    @JoinColumn(name = "usuario_idusuario", nullable = false)
+    public Usuario usuario;
+
+
+
+    public Empresa getEmpresa() {
+        return empresa;
     }
 
-    public void setUsuarios(Usuario usuarios) {
-        this.usuarios = usuarios;
+    public void setEmpresa(Empresa empresa) {
+        this.empresa = empresa;
     }
 
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+
+    @Column(name = "cedula", nullable = false, length = 45)
     public String getCedula() {
         return cedula;
     }
@@ -46,6 +62,7 @@ public class Persona {
         this.cedula = cedula;
     }
 
+    @Column(name = "rol", nullable = false, length = 45)
     public String getRol() {
         return rol;
     }
@@ -54,6 +71,7 @@ public class Persona {
         this.rol = rol;
     }
 
+    @Column(name = "telefono", length = 45)
     public String getTelefono() {
         return telefono;
     }
@@ -62,6 +80,7 @@ public class Persona {
         this.telefono = telefono;
     }
 
+    @Column(name = "apellido", length = 45)
     public String getApellido() {
         return apellido;
     }
@@ -70,6 +89,7 @@ public class Persona {
         this.apellido = apellido;
     }
 
+    @Column(name = "nombre", nullable = false, length = 45)
     public String getNombre() {
         return nombre;
     }

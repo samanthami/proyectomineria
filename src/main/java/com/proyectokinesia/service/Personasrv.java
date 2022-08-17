@@ -26,7 +26,7 @@ public class Personasrv  implements PersonaImpl {
     }
 
     @Override
-    public Persona findById(Persona Id) {
+    public Persona findById(Integer Id) {
         return personaDAO.findById(Id);
     }
 
@@ -39,8 +39,8 @@ public class Personasrv  implements PersonaImpl {
 
 
     @Override
-    public Persona update(Persona persona) {
-      return  personaDAO.save(persona);
+    public void update(Persona persona) {
+       personaDAO.save(persona);
     }
 
 

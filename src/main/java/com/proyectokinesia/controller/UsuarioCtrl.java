@@ -23,15 +23,25 @@ public class UsuarioCtrl {
         return usuarioSrv.find();
     }
 
+    @GetMapping(value = "/usuarioById/{id}")
+    public Usuario findAll(@PathVariable("id") Integer id){
+        return  usuarioSrv.findById(id);
+    }
+
     @PostMapping(value = "/inseruser",consumes = { "application/json" })
     public Usuario insertusuario(@RequestBody Usuario usuario){
         return usuarioSrv.save(usuario);
     }
 
     @PutMapping(value = "/updateUsuario/{id}")
-    public Usuario updateUsuario(@PathVariable("id")Integer id, @RequestBody Usuario usuario){
-        usuario.setId(id);
-        return usuarioSrv.update(usuario);
+    public void updateUsuario(@PathVariable("id")Integer id, @RequestBody Usuario usuario){
+
+       Usuario user = usuarioSrv.findById(id);
+
+       user.setContrasena(usuario.getContrasena());
+       user.setUsuario(usuario.getUsuario());
+       usuarioSrv.update(user);
+
     }
 
     @PutMapping(value = "/desactivarUsuario/{id}")

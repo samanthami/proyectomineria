@@ -30,11 +30,15 @@ public class PersonaCtrl {
         return personasrv.save(persona);
     }
 
-    @PutMapping(value = "/updatePersona/{id}")
-    public Persona updatePersona(@PathVariable("id") Persona id, @RequestBody Persona persona){
+   /* @PutMapping(value = "/updatePersona/{id}")
+    public void updatePersona(@PathVariable("id") Integer id, @RequestBody Persona persona){
         Persona per1 = personasrv.findById(id);
-        return personasrv.save(per1);
-    }
+        per1.setNombre(persona.getNombre());
+        per1.setApellido(persona.getApellido());
+        per1.setTelefono(persona.getTelefono());
+        per1.setCedula(persona.getCedula());
+        personasrv.save(per1);
+    }*/
     @GetMapping(value = "/", produces = "application/json")
     public List<Persona> findAll1() {
         return personasrv.findAll();

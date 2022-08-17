@@ -16,5 +16,5 @@ public interface PersonaDAO extends JpaRepository<Persona, String> {
     @Override
     <S extends Persona> S save(S entity);
 
-    <S extends Persona> S findById(Persona id);
+    <S extends Persona> S findById(Integer id);
 }

@@ -1,57 +1,51 @@
 package com.proyectokinesia.entidad;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Type;
-import org.hibernate.annotations.TypeDef;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
-@Entity
-@Table(name = "usuario")
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonDeserialize(as = Usuario.class)
+@Entity
+@Table(name = "usuario")
 public class Usuario implements Serializable {
 
     @Id
     @Column(name = "idusuario", nullable = false)
     private Integer id;
 
-    @Column(name = "usuario", nullable = false, length = 45)
     private String usuario;
 
-    @Column(name = "contrasena", nullable = false, length = 45)
     private String contrasena;
 
+    private Boolean estado = false;
+
+
+   /* @OneToMany(mappedBy = "usuario")
+    public Set<Persona> personas;*/
+
+  /*  public void setPersonas(Set<Persona> personas) {
+        this.personas = personas;
+    }
+
+    public Set<Persona> getPersonas() {
+        return personas;
+    }*/
+
     @Column(name = "estado", nullable = false)
-    private Integer estado;
-
-
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "persona_idpersona", nullable = false)
-    private Persona personaIdpersona;
-
-    public Persona getPersonaIdpersona() {
-        return personaIdpersona;
-    }
-
-    public void setPersonaIdpersona(Persona personaIdpersona) {
-        this.personaIdpersona = personaIdpersona;
-    }
-
-    public Integer getEstado() {
+    public Boolean getEstado() {
         return estado;
     }
 
-    public void setEstado(Integer estado) {
+    public void setEstado(Boolean estado) {
         this.estado = estado;
     }
 
+    @Column(name = "contrasena", nullable = false, length = 45)
     public String getContrasena() {
         return contrasena;
     }
@@ -60,6 +54,7 @@ public class Usuario implements Serializable {
         this.contrasena = contrasena;
     }
 
+    @Column(name = "usuario", nullable = false, length = 45)
     public String getUsuario() {
         return usuario;
     }

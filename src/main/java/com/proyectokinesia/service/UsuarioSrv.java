@@ -24,7 +24,7 @@ public class UsuarioSrv implements UsuarioImpl {
     }
 
     @Override
-    public Usuario findById(Integer Id) {
+    public  Usuario findById(Integer Id) {
         return dao.findById(Id);
     }
 
@@ -34,17 +34,17 @@ public class UsuarioSrv implements UsuarioImpl {
     }
 
     @Override
-    public Usuario update(Usuario usuario) {
-        return dao.save(usuario);
+    public void update(Usuario usuario) {
+         dao.save(usuario);
     }
 
 
     public Usuario estado(Integer Id) {
         Usuario usr = dao.findById(Id);
-        if (usr.getEstado() == 1){
-            usr.setEstado(0);
+        if (usr.getEstado() == true){
+            usr.setEstado(false);
         }else{
-            usr.setEstado(1);
+            usr.setEstado(true);
         }
         return dao.save(usr);
     }
