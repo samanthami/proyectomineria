@@ -5,7 +5,6 @@ import com.proyectokinesia.entidad.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.proyectokinesia.dao.UsuarioDao;
-import com.proyectokinesia.service.impl.UsuarioImpl;
 
 import java.util.List;
 
@@ -13,9 +12,9 @@ import java.util.List;
 public class UsuarioSrv implements UsuarioImpl {
 
     @Autowired
-    UsuarioDao dao;
+    private UsuarioDao dao;
     @Autowired
-    Personasrv personasrv;
+    private Personasrv personasrv;
 
 
     @Override

@@ -3,7 +3,6 @@ package com.proyectokinesia.service;
 
 import com.proyectokinesia.dao.PersonaDAO;
 import com.proyectokinesia.entidad.Persona;
-import com.proyectokinesia.service.impl.PersonaImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +12,7 @@ import java.util.List;
 public class Personasrv  implements PersonaImpl {
 
     @Autowired
-    PersonaDAO personaDAO;
+    private PersonaDAO personaDAO;
 
     @Override
     public List<Persona> findAll() {
