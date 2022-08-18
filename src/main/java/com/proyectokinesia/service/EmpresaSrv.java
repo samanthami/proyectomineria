@@ -12,6 +12,8 @@ public class EmpresaSrv implements EmpresaImpl {
 
     @Autowired
     private EmpresaDao empresaDao;
+
+
     @Override
     public List<Empresa> findAll() {
         return empresaDao.findAll();
