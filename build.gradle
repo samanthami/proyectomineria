@@ -22,14 +22,26 @@ jar {
     }
 }
 
+
 configurations {
     all*.exclude module : 'spring-boot-starter-logging'
 }
 
-task stage(dependsOn: ['build', 'clean'])
-build.mustRunAfter clean
 
 
+
+task stage(type: Copy, dependsOn: [clean, build]) {
+    from jar.archivePath
+    into project.rootDir
+    rename {
+        'app.jar'
+    }
+}
+stage.mustRunAfter(clean)
+
+clean  {
+    project.file('app.jar').delete()
+}
 
 dependencies {
     // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa
