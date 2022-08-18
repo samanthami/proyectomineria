@@ -13,8 +13,6 @@ public class UsuarioSrv implements UsuarioImpl {
 
     @Autowired
     private UsuarioDao dao;
-    @Autowired
-    private Personasrv personasrv;
 
 
     @Override
