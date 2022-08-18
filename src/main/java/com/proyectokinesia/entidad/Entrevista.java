@@ -17,19 +17,22 @@ import java.util.Date;
 public class Entrevista  {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "identrevista", nullable = false)
     private Integer id;
+    @Column(name = "fechaentrevista")
+   private Date fechaentrevista;
 
-   // private Date fechaEntrevista;
     @Column(name = "nombreentrevistador")
     private String nombreEntrevistador;
-    @Column(name = "gestos")
+
     private String gestos;
-    @Column(name = "entrevistacol")
-    private String entrevistacol;
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "persona_idpersona", nullable = false)
-    public Persona personaIdoersona;
+
+
+
+    @ManyToOne
+    @JoinColumn(name = "persona_idpersona")
+    public Persona personaIdpersona;
 
 
     public String getNombreEntrevistador() {
@@ -39,7 +42,7 @@ public class Entrevista  {
     public void setNombreEntrevistador(String nombreEntrevistador) {
         this.nombreEntrevistador = nombreEntrevistador;
     }
-
+    @Column(name = "gestos")
     public String getGestos() {
         return gestos;
     }
@@ -48,24 +51,31 @@ public class Entrevista  {
         this.gestos = gestos;
     }
 
-    public String getEntrevistacol() {
-        return entrevistacol;
-    }
-
-    public void setEntrevistacol(String entrevistacol) {
-        this.entrevistacol = entrevistacol;
-    }
-
-
 
     public Persona getPersonaIdoersona() {
-        return personaIdoersona;
+        return personaIdpersona;
     }
 
     public void setPersonaIdoersona(Persona personaIdoersona) {
-        this.personaIdoersona = personaIdoersona;
+        this.personaIdpersona = personaIdoersona;
     }
 
+
+
+    public Date getFechaEntrevista() {
+        return fechaentrevista;
+    }
+    public void setFechaEntrevista(Date fechaEntrevista) {
+        this.fechaentrevista = fechaEntrevista;
+    }
+
+    public Persona getPersonaIdpersona() {
+        return personaIdpersona;
+    }
+
+    public void setPersonaIdpersona(Persona personaIdpersona) {
+        this.personaIdpersona = personaIdpersona;
+    }
 
     public Integer getId() {
         return id;

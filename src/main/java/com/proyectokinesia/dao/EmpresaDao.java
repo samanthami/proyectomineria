@@ -1,8 +1,6 @@
 package com.proyectokinesia.dao;
 
 import com.proyectokinesia.entidad.Empresa;
-import com.proyectokinesia.entidad.Persona;
-import org.springframework.data.domain.Example;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -18,6 +16,6 @@ public interface EmpresaDao extends JpaRepository<Empresa,String> {
     @Override
     <S extends Empresa> S save(S entity);
 
-    <S extends Empresa> S findById(Integer id);
 
+    Empresa findById(Integer id);
 }

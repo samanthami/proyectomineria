@@ -1,0 +1,9 @@
+
+f	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÃÕ¦´
+m	java:S117*"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ìÌ¨Ê8³üïïª0
+G
+java:S5411,"*Use the primitive boolean expression here.(“Þ¿Â8ÆÑðïª0
+_
+java:S1126,"BReplace this if-then-else statement by a single method invocation.(“Þ¿Â8Ù“ñïª0
+D
+java:S1125,"'Remove the unnecessary boolean literal.(“Þ¿Â8äÑðïª0

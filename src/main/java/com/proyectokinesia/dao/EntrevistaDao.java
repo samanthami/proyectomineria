@@ -5,6 +5,7 @@ import org.springframework.data.domain.Example;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,6 +18,9 @@ public interface EntrevistaDao extends JpaRepository<Entrevista, String> {
     @Override
     <S extends Entrevista> S save(S entity) ;
 
-    @Override
-    Optional<Entrevista> findById(String s) ;
+
+    Entrevista findById(Integer id) ;
+    List<Entrevista> findByNombreEntrevistador(String nombre);
+
+    List<Entrevista> findByFechaentrevista(Date fecha);
 }

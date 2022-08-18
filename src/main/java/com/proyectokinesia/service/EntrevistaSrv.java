@@ -8,6 +8,7 @@ import com.proyectokinesia.service.impl.EntrevistaImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -23,17 +24,27 @@ public class EntrevistaSrv  implements EntrevistaImpl {
 
     @Override
     public Entrevista findById(Integer id) {
-        return null;
+        return dao.findById(id);
     }
 
     @Override
     public Entrevista save(Entrevista entrevista) {
-        return null;
+        return dao.save(entrevista);
     }
 
     @Override
     public void update(Entrevista entrevista) {
+        dao.save(entrevista);
+    }
 
+    @Override
+    public List<Entrevista> findByNombreEntrevistador(String nombre) {
+        return dao.findByNombreEntrevistador(nombre);
+    }
+
+    @Override
+    public List<Entrevista> findByFecha(Date fecha) {
+        return null;
     }
 
 

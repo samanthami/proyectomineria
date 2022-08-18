@@ -18,6 +18,7 @@ import java.util.Set;
 public class Empresa implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idempresas", nullable = false)
     private Integer id;
 
@@ -25,7 +26,7 @@ public class Empresa implements Serializable {
 
     private String telefono;
 
-    private Boolean estado;
+    private Boolean estado = false;
 
     
    /* @OneToMany(mappedBy = "empresa")
@@ -34,7 +35,7 @@ public class Empresa implements Serializable {
     /*public Set<Persona> getPersonas() {
         return personas;
     }*/
-    @Column(name = "nombreempresa")
+    @Column(name = "nombreempresa", nullable = false)
     public String getNombreempresa() {
         return nombreempresa;
     }
@@ -50,7 +51,7 @@ public class Empresa implements Serializable {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
-    @Column(name = "estado")
+    @Column(name = "estado", nullable = false)
     public Boolean getEstado() {
         return estado;
     }

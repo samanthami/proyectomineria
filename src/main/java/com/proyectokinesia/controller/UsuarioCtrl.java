@@ -11,11 +11,9 @@ import java.util.List;
 public class UsuarioCtrl {
 
     UsuarioSrv usuarioSrv;
-    Personasrv personasrv;
 
     public UsuarioCtrl(UsuarioSrv usuarioSrv,Personasrv personasrv) {
         this.usuarioSrv = usuarioSrv;
-        this.personasrv = personasrv;
     }
 
     @GetMapping(value = "/usuario")

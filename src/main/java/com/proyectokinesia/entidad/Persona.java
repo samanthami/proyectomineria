@@ -13,6 +13,7 @@ import java.io.Serializable;
 public class Persona  {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idpersona", nullable = false)
     private Integer id;
 
@@ -34,9 +35,7 @@ public class Persona  {
     @JoinColumn(name = "usuario_idusuario", nullable = false)
     public Usuario usuario;
 
-
-
-    public Empresa getEmpresa() {
+ public Empresa getEmpresa() {
         return empresa;
     }
 
@@ -44,7 +43,7 @@ public class Persona  {
         this.empresa = empresa;
     }
 
-    public Usuario getUsuario() {
+   public Usuario getUsuario() {
         return usuario;
     }
 
