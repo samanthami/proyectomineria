@@ -11,8 +11,11 @@ import java.util.List;
 @Service
 public class EmpresaSrv implements EmpresaImpl {
 
-    @Autowired
-    private EmpresaDao empresaDao;
+    private final EmpresaDao empresaDao;
+
+    public EmpresaSrv(EmpresaDao empresaDao) {
+        this.empresaDao = empresaDao;
+    }
 
 
     @Override

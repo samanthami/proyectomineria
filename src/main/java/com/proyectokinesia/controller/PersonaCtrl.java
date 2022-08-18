@@ -1,7 +1,7 @@
 package com.proyectokinesia.controller;
 
 import com.proyectokinesia.entidad.Persona;
-import com.proyectokinesia.service.Personasrv;
+import com.proyectokinesia.service.PersonaSrv;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,7 +11,7 @@ import java.util.List;
 public class PersonaCtrl {
 
     @Autowired
-   private Personasrv personasrv;
+   private PersonaSrv personasrv;
 
 
     @GetMapping(value = "/personaLista", produces = "application/json")

@@ -12,8 +12,11 @@ import java.util.List;
 @Service
 public class EntrevistaSrv  implements EntrevistaImpl {
 
-    @Autowired
-    private EntrevistaDao dao;
+    private final EntrevistaDao dao;
+
+    public EntrevistaSrv(EntrevistaDao dao) {
+        this.dao = dao;
+    }
 
     @Override
     public List<Entrevista> findAll() {

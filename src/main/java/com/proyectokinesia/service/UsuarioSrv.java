@@ -12,8 +12,11 @@ import java.util.List;
 @Service
 public class UsuarioSrv implements UsuarioImpl {
 
-    @Autowired
-    private UsuarioDao dao;
+    private final UsuarioDao dao;
+
+    public UsuarioSrv(UsuarioDao dao) {
+        this.dao = dao;
+    }
 
 
     @Override

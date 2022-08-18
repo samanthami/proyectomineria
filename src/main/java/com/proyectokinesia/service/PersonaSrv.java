@@ -10,10 +10,13 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class Personasrv  implements PersonaImpl {
+public class PersonaSrv implements PersonaImpl {
 
-    @Autowired
-    private PersonaDAO personaDAO;
+    private final PersonaDAO personaDAO;
+
+    public PersonaSrv(PersonaDAO personaDAO) {
+        this.personaDAO = personaDAO;
+    }
 
     @Override
     public List<Persona> findAll() {
