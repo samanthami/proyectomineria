@@ -29,8 +29,6 @@ l
 <src/main/java/com/proyectokinesia/service/EntrevistaSrv.java,3/5/354273ba92312181dd0af87694c77c9cef07e71d
 E
 .jpb/jpb-settings.xml,4/4/44d3869e4ab8f5a6660709b629065ab6e5795b01
-m
-=src/main/java/com/proyectokinesia/controller/UsuarioCtrl.java,d/b/db6c833cd1672a320bc7906e3d44515282d5719e
 p
 @src/main/java/com/proyectokinesia/controller/EntrevistaCtrl.java,d/0/d0700b858e2f9e1f937ea3d1561e8607e1b6dc3f
 i
