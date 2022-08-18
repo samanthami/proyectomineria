@@ -15,7 +15,7 @@ import java.util.List;
 public class EntrevistaSrv  implements EntrevistaImpl {
 
     @Autowired
-    EntrevistaDao dao;
+    private EntrevistaDao dao;
 
     @Override
     public List<Entrevista> findAll() {
