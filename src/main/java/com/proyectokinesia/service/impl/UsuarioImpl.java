@@ -1,10 +1,11 @@
 package com.proyectokinesia.service.impl;
 
 import com.proyectokinesia.entidad.Usuario;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-
+@Repository
 public interface UsuarioImpl {
     List<Usuario> find();
 
