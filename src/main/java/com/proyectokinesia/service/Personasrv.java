@@ -3,6 +3,7 @@ package com.proyectokinesia.service;
 
 import com.proyectokinesia.dao.PersonaDAO;
 import com.proyectokinesia.entidad.Persona;
+import com.proyectokinesia.srvImpl.PersonaImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

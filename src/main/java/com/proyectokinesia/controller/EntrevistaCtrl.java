@@ -2,6 +2,7 @@ package com.proyectokinesia.controller;
 
 import com.proyectokinesia.entidad.Entrevista;
 import com.proyectokinesia.service.EntrevistaSrv;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
@@ -10,11 +11,8 @@ import java.util.List;
 @RestController
 public class EntrevistaCtrl {
 
-    EntrevistaSrv entrevistaSrv;
-
-    public EntrevistaCtrl(EntrevistaSrv entrevistaSrv) {
-        this.entrevistaSrv = entrevistaSrv;
-    }
+    @Autowired
+    private EntrevistaSrv entrevistaSrv;
 
     @GetMapping(value = "/entrevista")
     public List<Entrevista> findAll(){

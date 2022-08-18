@@ -3,6 +3,7 @@ package com.proyectokinesia.controller;
 import com.proyectokinesia.entidad.Usuario;
 import com.proyectokinesia.service.Personasrv;
 import com.proyectokinesia.service.UsuarioSrv;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,11 +11,9 @@ import java.util.List;
 @RestController
 public class UsuarioCtrl {
 
+    @Autowired
     UsuarioSrv usuarioSrv;
 
-    public UsuarioCtrl(UsuarioSrv usuarioSrv,Personasrv personasrv) {
-        this.usuarioSrv = usuarioSrv;
-    }
 
     @GetMapping(value = "/usuario")
     public List<Usuario> findAll(){

@@ -2,6 +2,7 @@ package com.proyectokinesia.service;
 
 import com.proyectokinesia.dao.EntrevistaDao;
 import com.proyectokinesia.entidad.Entrevista;
+import com.proyectokinesia.srvImpl.EntrevistaImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

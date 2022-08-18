@@ -2,6 +2,7 @@ package com.proyectokinesia.service;
 
 
 import com.proyectokinesia.entidad.Usuario;
+import com.proyectokinesia.srvImpl.UsuarioImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.proyectokinesia.dao.UsuarioDao;

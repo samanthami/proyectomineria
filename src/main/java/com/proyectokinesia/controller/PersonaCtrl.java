@@ -2,6 +2,7 @@ package com.proyectokinesia.controller;
 
 import com.proyectokinesia.entidad.Persona;
 import com.proyectokinesia.service.Personasrv;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -9,11 +10,9 @@ import java.util.List;
 @RestController
 public class PersonaCtrl {
 
-   Personasrv personasrv;
+    @Autowired
+   private Personasrv personasrv;
 
-    public PersonaCtrl(Personasrv personasrv) {
-        this.personasrv = personasrv;
-    }
 
     @GetMapping(value = "/personaLista", produces = "application/json")
     public List<Persona> findAll() {

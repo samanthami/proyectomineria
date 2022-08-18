@@ -3,6 +3,7 @@ package com.proyectokinesia.controller;
 import com.proyectokinesia.entidad.Empresa;
 import com.proyectokinesia.entidad.Usuario;
 import com.proyectokinesia.service.EmpresaSrv;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,11 +11,9 @@ import java.util.List;
 @RestController
 public class EmpresaCtrl {
 
-    EmpresaSrv empresaSrv;
+    @Autowired
+    private EmpresaSrv empresaSrv;
 
-    public EmpresaCtrl(EmpresaSrv empresaSrv) {
-        this.empresaSrv = empresaSrv;
-    }
 
     @GetMapping(value = "/empresa")
     public List<Empresa> findAll(){
