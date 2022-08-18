@@ -12,14 +12,8 @@ repositories {
     mavenCentral()
 }
 
-/*
-jar {
-    manifest {
-        attributes(
-                'Main-Class': 'com.proyectokinesia.'
-        )
-    }
-}
+
+
 
 configurations {
     all*.exclude module : 'spring-boot-starter-logging'
@@ -27,7 +21,7 @@ configurations {
 
 task stage(dependsOn: ['build', 'clean'])
 build.mustRunAfter clean
-*/
+
 
 
 dependencies {
@@ -50,14 +44,14 @@ dependencies {
     // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
    // implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.13.3'
 }
-/*
+
 gradle.taskGraph.whenReady {
     taskGraph ->
         if (taskGraph.hasTask(stage)) {
             test.enabled = false
         }
 }
-*/
+
 
 test {
     useJUnitPlatform()
