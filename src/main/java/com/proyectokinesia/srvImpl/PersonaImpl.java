@@ -4,7 +4,8 @@ import com.proyectokinesia.entidad.Persona;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-@Repository
+
+
 public interface PersonaImpl {
 
     List<Persona> findAll();

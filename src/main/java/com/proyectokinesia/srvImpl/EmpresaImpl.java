@@ -4,7 +4,7 @@ import com.proyectokinesia.entidad.Empresa;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-@Repository
+
 public interface EmpresaImpl {
 
     List<Empresa> findAll();
