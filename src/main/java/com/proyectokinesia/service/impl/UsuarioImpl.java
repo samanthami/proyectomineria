@@ -1,7 +1,6 @@
 package com.proyectokinesia.service.impl;
 
 import com.proyectokinesia.entidad.Usuario;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
