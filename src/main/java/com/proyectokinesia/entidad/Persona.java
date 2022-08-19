@@ -6,8 +6,6 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.io.Serializable;
 
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name = "persona")
 public class Persona  {

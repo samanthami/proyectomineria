@@ -8,8 +8,7 @@ import java.io.Serializable;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-@NoArgsConstructor
-@AllArgsConstructor
+
 @Entity
 @Table(name = "usuario")
 public class Usuario implements Serializable {

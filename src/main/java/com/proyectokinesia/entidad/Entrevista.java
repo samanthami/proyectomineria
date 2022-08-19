@@ -10,8 +10,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Date;
 
-@NoArgsConstructor
-@AllArgsConstructor
+
 @Entity
 @Table(name = "entrevista")
 public class Entrevista  {
