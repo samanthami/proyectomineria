@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 import java.util.Date;
 import java.util.List;
 
-@Repository
 public interface EntrevistaDao extends JpaRepository<Entrevista, String> {
 
     @Override
