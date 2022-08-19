@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 
+@Repository
 public interface UsuarioDao  extends JpaRepository<Usuario, String> {
 
     @Override
