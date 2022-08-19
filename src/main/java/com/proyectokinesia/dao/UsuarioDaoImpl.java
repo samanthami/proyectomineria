@@ -8,6 +8,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.query.FluentQuery;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
@@ -26,7 +27,9 @@ public class UsuarioDaoImpl implements  UsuarioDao{
 
     @Override
     public List<Usuario> findAll() {
-        return List.of(new Usuario() , new Usuario());
+         List<Usuario> Usuario = new ArrayList<>();
+         Usuario.add(new Usuario());
+         return Usuario;
     }
 
     @Override
