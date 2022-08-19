@@ -26,7 +26,7 @@ public class UsuarioDaoImpl implements  UsuarioDao{
 
     @Override
     public List<Usuario> findAll() {
-        return null;
+        return List.of(new Usuario() , new Usuario());
     }
 
     @Override
