@@ -15,9 +15,9 @@ spring:
 
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/kinterview
-    username: root
-    password: milena10
+    url: jdbc:mysql://opdhbb8zbtf2n9ii:m7adrnrba2dtkwka@gp96xszpzlqupw4k.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/t4by2jvmyflhgr7g
+    username: opdhbb8zbtf2n9ii
+    password: m7adrnrba2dtkwka
     hikari:
       maximum-pool-size: 2
 jpa:
