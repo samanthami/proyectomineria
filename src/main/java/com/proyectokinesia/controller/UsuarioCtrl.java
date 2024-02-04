@@ -1,8 +1,8 @@
 package com.proyectokinesia.controller;
 
-import com.proyectokinesia.entidad.Usuario;
-import com.proyectokinesia.service.UsuarioSrv;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.proyectokinesia.Entity.Rol;
+import com.proyectokinesia.Entity.Usuario;
+import com.proyectokinesia.Service.UsuarioSrv;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,9 +10,11 @@ import java.util.List;
 @RestController
 public class UsuarioCtrl {
 
-    @Autowired
-    UsuarioSrv usuarioSrv;
+   private final UsuarioSrv usuarioSrv;
 
+    public UsuarioCtrl(UsuarioSrv usuarioSrv) {
+        this.usuarioSrv = usuarioSrv;
+    }
 
     @GetMapping(value = "/usuario")
     public List<Usuario> findAll(){
@@ -25,8 +27,8 @@ public class UsuarioCtrl {
     }
 
     @PostMapping(value = "/inseruser",consumes = { "application/json" })
-    public Usuario insertusuario(@RequestBody Usuario usuario){
-        return usuarioSrv.save(usuario);
+    public Usuario insertusuario(@RequestBody Usuario usuario, String rolUsuario) throws Exception {
+        return usuarioSrv.save(usuario, rolUsuario);
     }
 
     @PutMapping(value = "/updateUsuario/{id}")

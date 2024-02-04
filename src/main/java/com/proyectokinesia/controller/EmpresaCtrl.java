@@ -1,19 +1,25 @@
 package com.proyectokinesia.controller;
 
-import com.proyectokinesia.entidad.Empresa;
-import com.proyectokinesia.entidad.Usuario;
-import com.proyectokinesia.service.EmpresaSrv;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import com.proyectokinesia.Entity.Empresa;
+import com.proyectokinesia.Service.EmpresaSrv;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
 public class EmpresaCtrl {
 
-    @Autowired
-    private EmpresaSrv empresaSrv;
 
+    private final EmpresaSrv empresaSrv;
+
+    public EmpresaCtrl(EmpresaSrv empresaSrv) {
+        this.empresaSrv = empresaSrv;
+    }
 
     @GetMapping(value = "/empresa")
     public List<Empresa> findAll(){

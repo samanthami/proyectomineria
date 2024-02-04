@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.20.0-2bc7ab61c56f459e8176eb05c7705e145cd400ad  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="informe" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6b2ec1e6-0b69-4b0f-b54c-70bc992e133b">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="report/informe/DataAdapter.jrdax"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="id" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[SELECT idpersona,
+	nombre,
+	apellido,
+	nombreentrevistador,
+	fechaentrevista,
+	gestos,
+	nombreempresa
+FROM entrevista AS e,
+	persona AS p,
+	empresa AS em
+WHERE 
+	 e.identrevista = $P{id} 
+	 AND em.idempresas = p.empresa_idempresas 
+	 AND  e.persona_idpersona = p.idpersona]]>
+	</queryString>
+	<field name="idpersona" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="idpersona"/>
+		<property name="com.jaspersoft.studio.field.label" value="idpersona"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="persona"/>
+	</field>
+	<field name="nombre" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nombre"/>
+		<property name="com.jaspersoft.studio.field.label" value="nombre"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="persona"/>
+	</field>
+	<field name="apellido" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="apellido"/>
+		<property name="com.jaspersoft.studio.field.label" value="apellido"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="persona"/>
+	</field>
+	<field name="nombreentrevistador" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nombreentrevistador"/>
+		<property name="com.jaspersoft.studio.field.label" value="nombreentrevistador"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="entrevista"/>
+	</field>
+	<field name="fechaentrevista" class="java.util.Date">
+		<property name="com.jaspersoft.studio.field.name" value="fechaentrevista"/>
+		<property name="com.jaspersoft.studio.field.label" value="fechaentrevista"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="entrevista"/>
+	</field>
+	<field name="gestos" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="gestos"/>
+		<property name="com.jaspersoft.studio.field.label" value="gestos"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="entrevista"/>
+	</field>
+	<field name="nombreempresa" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nombreempresa"/>
+		<property name="com.jaspersoft.studio.field.label" value="nombreempresa"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="empresa"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="138" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="30" width="550" height="70" forecolor="#336699" backcolor="#336699" uuid="68548328-267d-430b-bd42-a5ae479bcbfd"/>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<image>
+				<reportElement x="20" y="40" width="150" height="80" uuid="0a84ed48-ee22-4fd9-b908-c11ac73b6f79"/>
+				<imageExpression><![CDATA["src/main/resources/static/img/Imagen1.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="49" splitType="Stretch">
+			<textField evaluationTime="Report" pattern="MMMMM dd, yyyy">
+				<reportElement x="432" y="9" width="110" height="30" uuid="c1fe4be4-62e2-434e-9e24-a3fb8d5a91d8"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="400" y="9" width="100" height="30" uuid="6f9fa802-7863-4dc6-8069-1187707079d4"/>
+				<text><![CDATA[Quito,]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="333" splitType="Stretch">
+			<staticText>
+				<reportElement x="20" y="0" width="100" height="30" uuid="9e84f5e5-0697-458a-a142-7370a70bcc9f"/>
+				<text><![CDATA[Estimado Usuario:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="50" width="110" height="20" uuid="346af9ff-8431-407a-a731-5e73af9ef84b"/>
+				<text><![CDATA[El día ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="120" y="70" width="90" height="20" uuid="cf21b1e9-2065-4573-a83f-b8074de8197d"/>
+				<text><![CDATA[ por el psicólogo   ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="310" y="70" width="170" height="20" uuid="d154b9c3-fc79-4225-a299-ccc3749bb670"/>
+				<text><![CDATA[perteneciente a la Empresa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="90" width="310" height="20" uuid="206d0c83-03f7-4763-9c29-b23e261b736a"/>
+				<text><![CDATA[en la cual se pudo obtener los siguientes resultados:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="50" width="380" height="20" uuid="c707a4b8-5947-4c48-bfee-3d72cddfc7bf"/>
+				<text><![CDATA[se realizó la prueba psicológica en base al estudio de kinesia al postulante]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="200" width="524" height="39" uuid="3d2ce5c6-405c-490c-bbfc-7e5e580e9317"/>
+				<text><![CDATA[2. Los resultados obtenidos son únicamente una referencia del lenguaje corporal que el postulante]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="20" y="70" width="60" height="20" uuid="8249651b-b174-4dfd-bbd3-dd4261d76548">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d8cc528c-bd77-4a1e-bbe8-3db71a402755"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="70" y="70" width="75" height="20" uuid="be76a14f-7686-45bd-b712-0289ac203892">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="add777c6-6835-4a20-929b-032255bc914d"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{apellido}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="227" y="70" width="100" height="20" uuid="339486ea-bc03-4b1f-b7fd-899dd0f5ebd6">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9da48640-2f4a-4a78-bee0-ca96a2bd76cc"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombreentrevistador}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="20" y="90" width="100" height="20" uuid="e89872a9-1a20-4c88-be0e-7cb40f1e5f13">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="078f934f-7054-4ad7-9072-2d3ea5de1bfa"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombreempresa}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report" pattern="M/d/yy">
+				<reportElement x="60" y="50" width="70" height="20" uuid="d80f9d58-babe-445b-8f9b-1bf15de3d9eb">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b2db9558-2732-4a58-9bf4-ed351cde2863"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{fechaentrevista}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="20" y="131" width="500" height="69" uuid="b16af5f1-aafa-4712-a6a6-b813e2fd05c4">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f13f719f-6933-41e2-8fda-b0c1cd0aa459"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{gestos}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="20" y="250" width="490" height="20" uuid="1b8f93d6-cbfd-4e8e-85fe-1030ad4a548f"/>
+				<text><![CDATA[3. Los datos obtenidos son exclusivamente propiedad de la empresa.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="220" width="330" height="30" uuid="a4e42238-ce10-4984-8065-105c28d2d4ae"/>
+				<text><![CDATA[presentó  al responder ciertas preguntas en su entrevista.]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="24" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="81" splitType="Stretch">
+			<line>
+				<reportElement x="10" y="40" width="530" height="1" uuid="648a45e1-7ab3-4b27-b343-3758bbfcc534"/>
+			</line>
+			<staticText>
+				<reportElement x="20" y="40" width="100" height="20" uuid="c93e4e59-6d03-4244-a791-f0a97bac2b9d"/>
+				<text><![CDATA[Kinterview.Corp]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="56" splitType="Stretch"/>
+	</summary>
+</jasperReport>
