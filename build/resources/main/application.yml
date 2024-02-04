@@ -9,12 +9,15 @@ server:
 
 
 spring:
+  security:
+    basic:
+      enabled: true
+
   datasource:
-    testWhileIdle: true
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://us-cdbr-east-06.cleardb.net:3306/heroku_6d40692b894f561
-    username: b39fe6272f2731
-    password: 5e51d8ec
+    url: jdbc:mysql://localhost:3306/kinterview
+    username: root
+    password: milena10
     hikari:
       maximum-pool-size: 2
 jpa:
