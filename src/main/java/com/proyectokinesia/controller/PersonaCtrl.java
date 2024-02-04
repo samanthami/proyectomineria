@@ -2,8 +2,12 @@ package com.proyectokinesia.controller;
 
 import com.proyectokinesia.Entity.Persona;
 import com.proyectokinesia.Service.PersonaSrv;
-import com.proyectokinesia.Service.UsuarioSrv;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -11,11 +15,9 @@ import java.util.List;
 public class PersonaCtrl {
 
    private final PersonaSrv personasrv;
-   private final UsuarioSrv usuarioSrv;
 
-    public PersonaCtrl(PersonaSrv personasrv, UsuarioSrv usuarioSrv) {
+    public PersonaCtrl(PersonaSrv personasrv) {
         this.personasrv = personasrv;
-        this.usuarioSrv = usuarioSrv;
     }
 
     @GetMapping(value = "/personaLista", produces = "application/json")
@@ -56,8 +58,8 @@ public class PersonaCtrl {
     }*/
 
     @GetMapping(value = "/personaRlEm/{rol}/{Em}")
-    public List<Persona> findRolEmpres(@PathVariable("rol") String rol, @PathVariable("Em")String Em){
-        return personasrv.finbyRolEmpresa(rol, Em);
+    public List<Persona> findRolEmpres(@PathVariable("rol") String rol, @PathVariable("Em")String empresa){
+        return personasrv.finbyRolEmpresa(rol, empresa);
     }
 
 }

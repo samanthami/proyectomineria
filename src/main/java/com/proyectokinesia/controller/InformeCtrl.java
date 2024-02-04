@@ -1,10 +1,8 @@
 package com.proyectokinesia.controller;
 
 import com.proyectokinesia.Entity.Entrevista;
-import com.proyectokinesia.Service.EmpresaSrv;
 import com.proyectokinesia.Service.EntrevistaSrv;
 import com.proyectokinesia.Service.InformeSrv;
-import com.proyectokinesia.Service.PersonaSrv;
 import jakarta.servlet.http.HttpServletResponse;
 import net.sf.jasperreports.engine.JRException;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,14 +16,10 @@ public class InformeCtrl {
 
     private final InformeSrv informeSrv;
     private final EntrevistaSrv entrevistaSrv;
-    private final PersonaSrv personaSrv;
-    private final EmpresaSrv empresaSrv;
 
-    public InformeCtrl(InformeSrv informeSrv, EntrevistaSrv entrevistaSrv, PersonaSrv personaSrv, EmpresaSrv empresaSrv) {
+    public InformeCtrl(InformeSrv informeSrv, EntrevistaSrv entrevistaSrv) {
         this.informeSrv = informeSrv;
         this.entrevistaSrv = entrevistaSrv;
-        this.personaSrv = personaSrv;
-        this.empresaSrv = empresaSrv;
     }
 
     @GetMapping(value = "/informe/print/{id}")
