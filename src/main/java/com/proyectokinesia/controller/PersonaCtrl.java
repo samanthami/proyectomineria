@@ -30,9 +30,9 @@ public class PersonaCtrl {
         return personasrv.findCedula(cedula);
     }
 
-    @PostMapping(value = "/insertPersona/{id}")
-    public Persona insertpersona(@RequestBody  Persona persona, @PathVariable("id")Integer id){
-        return personasrv.saveP(persona, id);
+    @PostMapping(value = "/insertPersona/{id}/{idRol}")
+    public Persona insertpersona(@RequestBody  Persona persona, @PathVariable("id")Integer id, @PathVariable("idRol")Integer idRol){
+        return personasrv.saveP(persona, id, idRol);
     }
 
     @PostMapping(value = "/inPerNam/{em}")
@@ -51,11 +51,6 @@ public class PersonaCtrl {
         per1.setGenero(persona.getGenero());
         personasrv.save(per1);
     }
-/*
-    @GetMapping(value = "/personaRol/{rol}")
-    public List<Persona> findRol(@PathVariable("rol") String rol){
-        return personasrv.finbyRol(rol);
-    }*/
 
     @GetMapping(value = "/personaRlEm/{rol}/{Em}")
     public List<Persona> findRolEmpres(@PathVariable("rol") String rol, @PathVariable("Em")String empresa){

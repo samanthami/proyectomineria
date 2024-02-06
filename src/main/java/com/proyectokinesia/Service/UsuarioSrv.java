@@ -2,12 +2,12 @@ package com.proyectokinesia.Service;
 
 
 import com.proyectokinesia.Dao.RolDao;
+import com.proyectokinesia.Dao.UsuarioDao;
 import com.proyectokinesia.Entity.Rol;
 import com.proyectokinesia.Entity.Usuario;
 import lombok.AllArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import com.proyectokinesia.Dao.UsuarioDao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,9 +32,9 @@ public class UsuarioSrv implements UsuarioImpl {
     }
 
     @Override
-    public Usuario save(Usuario usuario, String rolUsuario) throws Exception {
+    public Usuario save(Usuario usuario, Integer idRol) throws Exception {
         if(!dao.existsByUsuario(usuario.getUsuario())) {
-            Optional<Rol> rol = rolDao.findByRolName(rolUsuario);
+            Optional<Rol> rol = rolDao.findById(idRol);
             List<Rol> rolSave = new ArrayList<>();
             rol.ifPresent(rolSave::add);
             usuario.setRoles(rolSave);

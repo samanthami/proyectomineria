@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface RolDao  extends JpaRepository<Rol,String> {
+public interface RolDao  extends JpaRepository<Rol,Integer> {
 
     Optional<Rol> findByRolName(String s);
 }

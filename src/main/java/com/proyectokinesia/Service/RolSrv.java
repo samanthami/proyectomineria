@@ -21,8 +21,8 @@ public class RolSrv implements RolSrvImpl {
     }
 
     @Override
-    public Rol findById(Integer id) {
-        return null;
+    public Optional<Rol> findById(Integer id) {
+        return rolDao.findById(id);
     }
 
     @Override

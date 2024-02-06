@@ -55,12 +55,12 @@ dependencies {
     runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.12.5'
 }
 
-/*gradle.taskGraph.whenReady {
-    taskGraph ->
-        if (taskGraph.hasTask(stage)) {
-            test.enabled = false
-        }
-}*/
+gradle.taskGraph.whenReady { taskGraph ->
+    if (taskGraph.hasTask(":stage")) {
+        test.enabled = false
+    }
+}
+
 
 test {
     useJUnitPlatform()

@@ -11,7 +11,7 @@ public interface UsuarioImpl {
 
     Usuario findById(Integer Id);
 
-    Usuario save(Usuario usuario, String rolUsario) throws Exception;
+    Usuario save(Usuario usuario, Integer rolUsario) throws Exception;
 
     void update(Usuario usuario);
 

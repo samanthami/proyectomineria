@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class RolCtrl {
@@ -29,7 +30,7 @@ public class RolCtrl {
     }
 
     @GetMapping(value = "/rol/{id}")
-    public Rol findById(@PathVariable("id") Integer id){
+    public Optional<Rol> findById(@PathVariable("id") Integer id){
         return rolSrv.findById(id);
     }
 }

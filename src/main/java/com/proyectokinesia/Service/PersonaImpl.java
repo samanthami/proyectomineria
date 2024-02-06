@@ -11,7 +11,7 @@ public interface PersonaImpl {
     Persona findCedula(String cedula);
     Persona findById(Integer Id);
     Persona findByUsuario(Usuario us);
-    Persona saveP (Persona persona, Integer id);
+    Persona saveP (Persona persona, Integer id, Integer idRol);
     Persona save(Persona persona);
     void update(Persona persona);
 

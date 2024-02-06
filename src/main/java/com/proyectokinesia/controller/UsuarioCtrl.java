@@ -31,8 +31,8 @@ public class UsuarioCtrl {
         return  usuarioSrv.findById(id);
     }
 
-    @PostMapping(value = "/inseruser",consumes = { "application/json" })
-    public Usuario insertusuario(@RequestBody Usuario usuario, String rolUsuario) throws Exception {
+    @PostMapping(value = "/inseruser/{idRol}",consumes = { "application/json" })
+    public Usuario insertusuario(@RequestBody Usuario usuario, @PathVariable("idRol")Integer rolUsuario) throws Exception {
         return usuarioSrv.save(usuario, rolUsuario);
     }
 
