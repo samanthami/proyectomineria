@@ -63,7 +63,7 @@ public class SecurityConfig {
         configuration.setAllowCredentials(true);
 
         UrlBasedCorsConfigurationSource urlBasedCorsConfigurationSource = new UrlBasedCorsConfigurationSource();
-        urlBasedCorsConfigurationSource.registerCorsConfiguration("/mineria/**", configuration);
+        urlBasedCorsConfigurationSource.registerCorsConfiguration("/**", configuration);
         return urlBasedCorsConfigurationSource;
 
     }
