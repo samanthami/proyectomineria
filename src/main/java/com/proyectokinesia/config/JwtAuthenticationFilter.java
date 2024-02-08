@@ -17,7 +17,6 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Date;
@@ -75,7 +74,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         Collection<? extends GrantedAuthority> roles = authResult.getAuthorities();
 
         Claims claims = Jwts.claims()
-                .add("authorities", new ObjectMapper().writeValueAsString(roles))
+                .add("authorities", roles)
                 .add("username", username)
                 .build();
 
@@ -91,8 +90,8 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         response.addHeader(HEADER_AUTHORIZATION, PREFIX_TOKEN + token);
 
         Map<String, String> body = new HashMap<>();
-        body.put("token", token);
         body.put("username", username);
+        body.put("authorities", roles.toString().replace("[", "").replace("]", ""));
         body.put("message", String.format("Hola %s has iniciado sesion con exito!", username));
         System.out.println(token);
 
