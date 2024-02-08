@@ -10,9 +10,9 @@ public class WebConf implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOriginPatterns("https://mineriaproyecto.herokuapp.com/mineria")
+                .allowedOriginPatterns("*")
                 .allowCredentials(true)
-                .allowedMethods("*")
+                .allowedMethods("OPTIONS", "GET", "POST", "PUT", "DELETE")
                 .maxAge(3600);
     }
 }

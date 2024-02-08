@@ -49,7 +49,7 @@ public class SecurityConfig {
                 .csrf(config -> config.disable())
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .sessionManagement(managment ->
-                        managment.sessionCreationPolicy(SessionCreationPolicy.ALWAYS))
+                        managment.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .logout(logout -> logout.permitAll()
                         .invalidateHttpSession(true));
         return http.build();
