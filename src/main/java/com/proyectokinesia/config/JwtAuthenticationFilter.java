@@ -90,11 +90,11 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         response.addHeader(HEADER_AUTHORIZATION, PREFIX_TOKEN + token);
 
         Map<String, String> body = new HashMap<>();
+        body.put("token", token);
         body.put("username", username);
         body.put("authorities", roles.toString().replace("[", "").replace("]", ""));
         body.put("message", String.format("Hola %s has iniciado sesion con exito!", username));
-        System.out.println(token);
-
+        body.put("rol", roles.toString().replace("[", "").replace("]", ""));
         response.getWriter().write(new ObjectMapper().writeValueAsString(body));
         response.setContentType(CONTENT_TYPE);
         response.setStatus(200);
