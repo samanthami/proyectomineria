@@ -8,6 +8,6 @@ public interface EmpresaImpl {
     List<Empresa> findAll();
     Empresa findById(Integer id);
     Empresa findByNombreEmpresa(String nombre);
-    Empresa save(Empresa empresa);
+    Empresa save(Empresa empresa) throws Exception;
     void update(Empresa empresa);
 }

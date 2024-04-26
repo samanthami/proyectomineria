@@ -11,7 +11,7 @@ public interface EmpresaDao extends JpaRepository<Empresa,String> {
 
     List<Empresa>findAll();
 
-    Empresa findByNombreempresa(String nombreEmpresa);
+    Empresa findByNombreEmpresa(String nombreEmpresa);
 
     @Override
     <S extends Empresa> S save(S entity);

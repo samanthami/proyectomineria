@@ -29,11 +29,14 @@ public class EmpresaSrv implements EmpresaImpl {
 
         @Override
         public Empresa findByNombreEmpresa(String nombre) {
-            return empresaDao.findByNombreempresa(nombre);
+            return empresaDao.findByNombreEmpresa(nombre);
         }
 
         @Override
-        public Empresa save(Empresa empresa) {
+        public Empresa save(Empresa empresa) throws Exception {
+            if(empresa.getNombreEmpresa().isEmpty()){
+                throw new Exception("Se debe ingresar el nombre");
+            }
             return empresaDao.save(empresa);
         }
 

@@ -3,8 +3,8 @@ package com.proyectokinesia.controller;
 import com.proyectokinesia.Entity.Empresa;
 import com.proyectokinesia.Service.EmpresaSrv;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,7 +28,11 @@ public class EmpresaCtrl {
 
     @PostMapping(value = "/empresaIS")
     public Empresa inserempresa(@RequestBody Empresa empresa){
-        return empresaSrv.save(empresa);
+        try{
+            return empresaSrv.save(empresa);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @GetMapping(value = "/empresaNM/{name}")
@@ -37,10 +41,10 @@ public class EmpresaCtrl {
     }
 
     @PutMapping(value = "/empresaUP/{id}")
-    public void updateEm(@PathVariable("id") Integer id, @RequestBody Empresa empresa){
+    public void updateEm(@PathVariable("id") Integer id, @RequestBody Empresa empresa) throws Exception {
         Empresa em = empresaSrv.findById(id);
-        em.setNombreempresa(empresa.getNombreempresa());
-       em.setTelefono(empresa.getNombreempresa());
+        em.setNombreEmpresa(empresa.getNombreEmpresa());
+       em.setTelefono(empresa.getNombreEmpresa());
        empresaSrv.save(em);
 
     }

@@ -17,6 +17,8 @@ public interface PersonaDAO extends JpaRepository<Persona, String> {
 
     Persona findByUsuario(Usuario us);
 
+    boolean existsByCedula(String cedula);
+
     @Override
     <S extends Persona> S save(S entity);
 

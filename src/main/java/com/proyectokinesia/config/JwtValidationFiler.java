@@ -1,5 +1,6 @@
 package com.proyectokinesia.config;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
@@ -45,11 +46,12 @@ public class JwtValidationFiler extends BasicAuthenticationFilter {
         try {
             Claims claims = Jwts.parser().verifyWith(SECRET_KEY).build().parseSignedClaims(token).getPayload();
             String username = claims.getSubject();
-            Object authoritiesClaims = claims.get("authorities");
+            List<GrantedAuthority> authoritiesClaim = (List<GrantedAuthority>) claims.get("authorities");
 
-            Collection<? extends GrantedAuthority> authorities = List.of(new ObjectMapper()
+            Collection<? extends GrantedAuthority> authorities = new ObjectMapper()
                     .addMixIn(SimpleGrantedAuthority.class, SimpleGrantedAuthorityJsonCreator.class)
-                    .readValue(authoritiesClaims.toString().getBytes(), SimpleGrantedAuthority[].class));
+                    .convertValue(authoritiesClaim, new TypeReference<List<SimpleGrantedAuthority>>() {
+                    });
 
             UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(username, null, authorities);
             SecurityContextHolder.getContext().setAuthentication(authenticationToken);
@@ -62,6 +64,11 @@ public class JwtValidationFiler extends BasicAuthenticationFilter {
             response.getWriter().write(new ObjectMapper().writeValueAsString(body));
             response.setStatus(HttpStatus.UNAUTHORIZED.value());
             response.setContentType(CONTENT_TYPE);
+        } catch (Exception e) {
+            Map<String, String> body = new HashMap<>();
+            body.put("error", e.getCause().getMessage());
+            response.getWriter().write(new ObjectMapper().writeValueAsString(body));
+            response.setStatus(HttpStatus.BAD_REQUEST.value());
         }
 
     }

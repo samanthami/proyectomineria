@@ -9,6 +9,7 @@ import com.proyectokinesia.Entity.Empresa;
 import com.proyectokinesia.Entity.Persona;
 import com.proyectokinesia.Entity.Rol;
 import com.proyectokinesia.Entity.Usuario;
+import com.proyectokinesia.Exception.CustomException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -51,7 +52,8 @@ public class PersonaSrv implements PersonaImpl {
 
 
     @Override
-    public Persona saveP(Persona persona, Integer id, Integer idRol) {
+    public Persona saveP(Persona persona, Integer id, Integer idRol) throws CustomException {
+        if(personaDAO.existsByCedula(persona.getCedula())) throw new CustomException("La cedula se encuentra ya registrada");
         Usuario usr = persona.getUsuario();
         Optional<Rol> rol = rolDao.findById(idRol);
         if(rol.isPresent()) usr.setRoles(rol.stream().toList());
@@ -75,13 +77,13 @@ public class PersonaSrv implements PersonaImpl {
 
 
     public List<Persona> finbyRolEmpresa(String rol, String em){
-        Empresa emp = empresaDao.findByNombreempresa(em);
+        Empresa emp = empresaDao.findByNombreEmpresa(em);
         Integer id = emp.getId();
         return personaDAO.finRolEmpresa(rol, id);
     }
 
     public Persona saveNamePer(Persona per, String em){
-        Empresa emp = empresaDao.findByNombreempresa(em);
+        Empresa emp = empresaDao.findByNombreEmpresa(em);
         per.setEmpresa(emp);
         Usuario ud = per.getUsuario();
         usuarioDao.save(ud);

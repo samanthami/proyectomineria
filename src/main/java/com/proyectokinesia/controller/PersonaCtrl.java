@@ -1,6 +1,7 @@
 package com.proyectokinesia.controller;
 
 import com.proyectokinesia.Entity.Persona;
+import com.proyectokinesia.Exception.CustomException;
 import com.proyectokinesia.Service.PersonaSrv;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,7 +15,7 @@ import java.util.List;
 @RestController
 public class PersonaCtrl {
 
-   private final PersonaSrv personasrv;
+    private final PersonaSrv personasrv;
 
     public PersonaCtrl(PersonaSrv personasrv) {
         this.personasrv = personasrv;
@@ -26,22 +27,26 @@ public class PersonaCtrl {
     }
 
     @GetMapping(value = "/personaByCed/{cedula}")
-    public Persona findByCed(@PathVariable("cedula")String cedula){
+    public Persona findByCed(@PathVariable("cedula") String cedula) {
         return personasrv.findCedula(cedula);
     }
 
     @PostMapping(value = "/insertPersona/{id}/{idRol}")
-    public Persona insertpersona(@RequestBody  Persona persona, @PathVariable("id")Integer id, @PathVariable("idRol")Integer idRol){
-        return personasrv.saveP(persona, id, idRol);
+    public Persona insertpersona(@RequestBody Persona persona, @PathVariable("id") Integer id, @PathVariable("idRol") Integer idRol) throws CustomException {
+        try {
+            return personasrv.saveP(persona, id, idRol);
+        } catch (Exception e){
+            throw  new CustomException(e.getMessage());
+        }
     }
 
     @PostMapping(value = "/inPerNam/{em}")
-    public  Persona insertPe(@RequestBody Persona persona, @PathVariable("em")String em){
-        return personasrv.saveNamePer(persona,em);
+    public Persona insertPe(@RequestBody Persona persona, @PathVariable("em") String em) {
+        return personasrv.saveNamePer(persona, em);
     }
 
     @PutMapping(value = "/updatePersona/{id}")
-    public void updatePersona(@PathVariable("id") Integer id, @RequestBody Persona persona){
+    public void updatePersona(@PathVariable("id") Integer id, @RequestBody Persona persona) {
         Persona per1 = personasrv.findById(id);
         per1.setNombre(persona.getNombre());
         per1.setApellido(persona.getApellido());
@@ -53,7 +58,7 @@ public class PersonaCtrl {
     }
 
     @GetMapping(value = "/personaRlEm/{rol}/{Em}")
-    public List<Persona> findRolEmpres(@PathVariable("rol") String rol, @PathVariable("Em")String empresa){
+    public List<Persona> findRolEmpres(@PathVariable("rol") String rol, @PathVariable("Em") String empresa) {
         return personasrv.finbyRolEmpresa(rol, empresa);
     }
 
