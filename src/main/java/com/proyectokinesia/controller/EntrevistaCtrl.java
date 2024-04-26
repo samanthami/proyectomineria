@@ -5,8 +5,13 @@ import com.proyectokinesia.Service.EntrevistaSrv;
 import com.proyectokinesia.dto.Emocion;
 import com.proyectokinesia.dto.Kinesia;
 import lombok.extern.java.Log;
-import org.springframework.web.bind.annotation.*;
-
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -84,10 +89,7 @@ public class EntrevistaCtrl {
             } else if (dato.equals("nervioso")) {
                 nervioso++;
                 emocion2 = new Emocion("Nervioso", nervioso);
-            } else if (dato.equals("confundido")) {
-                confundido++;
-                emocion3 = new Emocion("Confundido", confundido);
-            } else if (dato.equals("inseguro")) {
+            }  else if (dato.equals("inseguro")) {
                 inseguro++;
                 emocion4 = new Emocion("Inseguro", inseguro);
             } else if (dato.equals("verdad")) {
