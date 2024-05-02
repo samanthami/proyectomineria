@@ -3,6 +3,9 @@ package com.proyectokinesia.config;
 import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.proyectokinesia.Dao.PersonaDAO;
+import com.proyectokinesia.Dao.UsuarioDao;
+import com.proyectokinesia.Entity.Persona;
 import com.proyectokinesia.Entity.Usuario;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -28,16 +31,20 @@ import static com.proyectokinesia.config.constans.JwtConstants.HEADER_AUTHORIZAT
 import static com.proyectokinesia.config.constans.JwtConstants.PREFIX_TOKEN;
 import static com.proyectokinesia.config.constans.JwtConstants.SECRET_KEY;
 
-
 public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
-    private final AuthenticationManager authenticationManager;
+    private  AuthenticationManager authenticationManager;
 
-    public JwtAuthenticationFilter(AuthenticationManager authenticationManager) {
+    private final PersonaDAO personaDAO;
+
+    private final UsuarioDao usuarioDao;
+
+
+    public JwtAuthenticationFilter(AuthenticationManager authenticationManager, UsuarioDao usuarioDao, PersonaDAO personaDAO) {
         this.authenticationManager = authenticationManager;
+        this.usuarioDao = usuarioDao;
+        this.personaDAO = personaDAO;
     }
-
-
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
@@ -87,12 +94,16 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
         response.addHeader(HEADER_AUTHORIZATION, PREFIX_TOKEN + token);
 
+        Usuario usuario = usuarioDao.findByUsuario(username);
+        Persona persona = personaDAO.findByUsuario(usuario);
+
         Map<String, String> body = new HashMap<>();
         body.put("token", token);
         body.put("username", username);
         body.put("authorities", roles.toString().replace("[", "").replace("]", ""));
         body.put("message", String.format("Hola %s has iniciado sesion con exito!", username));
         body.put("rol", roles.toString().replace("[", "").replace("]", ""));
+        body.put("empresa", String.valueOf(persona.getEmpresa().getId()));
         response.getWriter().write(new ObjectMapper().writeValueAsString(body));
         response.setContentType(CONTENT_TYPE);
         response.setStatus(200);

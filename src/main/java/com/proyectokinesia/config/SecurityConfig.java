@@ -1,5 +1,7 @@
 package com.proyectokinesia.config;
 
+import com.proyectokinesia.Dao.PersonaDAO;
+import com.proyectokinesia.Dao.UsuarioDao;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,6 +19,9 @@ public class SecurityConfig {
 
     private AuthenticationConfiguration authenticationConfiguration;
 
+    private final UsuarioDao usuarioDao;
+    private final PersonaDAO personaDAO;
+
     @Bean
     AuthenticationManager authenticationManager() throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
@@ -33,7 +38,7 @@ public class SecurityConfig {
         http.authorizeHttpRequests((auth) ->
                         auth.requestMatchers( "/mineria/login").permitAll()
                                 .anyRequest().authenticated())
-                .addFilter(new JwtAuthenticationFilter(authenticationManager()))
+                .addFilter(new JwtAuthenticationFilter(authenticationManager(), usuarioDao, personaDAO))
                 .addFilter(new JwtValidationFiler(authenticationManager()))
                 .formLogin(login -> login.permitAll())
                 .csrf(config -> config.disable())

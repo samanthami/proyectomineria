@@ -50,7 +50,7 @@ public class UsuarioSrv implements UsuarioImpl {
 
 
     public Optional<Usuario> findByUsuario(String usuario) {
-        return  dao.findByUsuario(usuario);
+        return Optional.ofNullable(dao.findByUsuario(usuario));
     }
 
 

@@ -27,7 +27,7 @@ public class UserDetailsSrv implements UserDetailsService {
     @Transactional(readOnly = true)
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<Usuario> usuarioOptional = userDao.findByUsuario(username);
+        Optional<Usuario> usuarioOptional = Optional.ofNullable(userDao.findByUsuario(username));
 
         if(!usuarioOptional.isPresent()){
             throw  new UsernameNotFoundException("Usuario no encontrado");
