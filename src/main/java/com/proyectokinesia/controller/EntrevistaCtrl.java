@@ -65,7 +65,6 @@ public class EntrevistaCtrl {
         int confianza = 0;
         int aceptacion = 0;
         int nervioso = 0;
-        int confundido = 0;
         int inseguro = 0;
         int mentira = 0;
         int verdad = 0;
