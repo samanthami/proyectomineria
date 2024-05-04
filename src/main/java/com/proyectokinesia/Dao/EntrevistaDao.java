@@ -8,12 +8,13 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface EntrevistaDao extends JpaRepository<Entrevista, String> {
+public interface EntrevistaDao extends JpaRepository<Entrevista, Integer> {
 
-    Entrevista findById(Integer id) ;
-    List<Entrevista> findByNombreEntrevistador(String nombre);
 
+    @Query(value = "select e from Persona p, Entrevista e where p.cedula =?1")
+    List<Entrevista> findByCedulaEntrevistador(String nombre);
 
     @Query(value = "select e from Persona p, Entrevista e, Empresa em where em.nombreEmpresa =?1 and p.id = e.personaIdpersona.id and em.id = p.empresa.id ")
     List<Entrevista> allentrevista(String nombre);
+
 }

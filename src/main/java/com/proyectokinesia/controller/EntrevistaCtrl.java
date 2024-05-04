@@ -38,9 +38,9 @@ public class EntrevistaCtrl {
         return entrevistaSrv.save(entrevista);
     }
 
-    @GetMapping(value = "/entrevistaLi/{nombre}")
-    public List<Entrevista> findEntrevistador(@PathVariable("nombre") String nombre) {
-        return entrevistaSrv.findByNombreEntrevistador(nombre);
+    @GetMapping(value = "/entrevistaLi/{cedula}")
+    public List<Entrevista> findEntrevistador(@PathVariable("cedula") String cedula) {
+        return entrevistaSrv.findByNombreEntrevistador(cedula);
     }
 
     @GetMapping(value = "/entrevistaI/{id}")

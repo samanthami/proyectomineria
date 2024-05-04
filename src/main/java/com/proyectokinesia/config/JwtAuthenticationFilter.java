@@ -97,13 +97,13 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         Usuario usuario = usuarioDao.findByUsuario(username);
         Persona persona = personaDAO.findByUsuario(usuario);
 
-        Map<String, String> body = new HashMap<>();
+        Map<String, Object> body = new HashMap<>();
         body.put("token", token);
         body.put("username", username);
         body.put("authorities", roles.toString().replace("[", "").replace("]", ""));
         body.put("message", String.format("Hola %s has iniciado sesion con exito!", username));
         body.put("rol", roles.toString().replace("[", "").replace("]", ""));
-        body.put("empresa", String.valueOf(persona.getEmpresa().getId()));
+        body.put("persona", persona);
         response.getWriter().write(new ObjectMapper().writeValueAsString(body));
         response.setContentType(CONTENT_TYPE);
         response.setStatus(200);

@@ -18,7 +18,7 @@ import java.util.Optional;
 @Service
 public class PersonaSrv implements PersonaImpl {
     private final PersonaDAO personaDAO;
-    private  final EmpresaDao empresaDao;
+    private final EmpresaDao empresaDao;
     private final UsuarioDao usuarioDao;
     private final RolDao rolDao;
 
@@ -26,7 +26,7 @@ public class PersonaSrv implements PersonaImpl {
                       RolDao rolDao) {
         this.personaDAO = personaDAO;
         this.empresaDao = empresaDao;
-        this.usuarioDao= usuarioDao;
+        this.usuarioDao = usuarioDao;
         this.rolDao = rolDao;
     }
 
@@ -53,11 +53,15 @@ public class PersonaSrv implements PersonaImpl {
 
     @Override
     public Persona saveP(Persona persona, Integer id, Integer idRol) throws CustomException {
-        if(personaDAO.existsByCedula(persona.getCedula())) throw new CustomException("La cedula se encuentra ya registrada");
+        if (personaDAO.existsByCedula(persona.getCedula()))
+            throw new CustomException("La cedula se encuentra ya registrada");
         Usuario usr = persona.getUsuario();
         Optional<Rol> rol = rolDao.findById(idRol);
-        if(rol.isPresent()) usr.setRoles(rol.stream().toList());
-        usuarioDao.save(usr);
+        if (usr.getUsuario() == null) {
+            usr = Usuario.builder().usuario(persona.getNombre() + persona.getApellido().substring(0, 3)).contrasena(persona.getCedula() + persona.getNombre()).roles(rol.stream().toList()).estado(false).build();
+        }
+       Usuario usuario =  usuarioDao.save(usr);
+        persona.setUsuario(usuario);
         Empresa em = empresaDao.findById(id);
         persona.setEmpresa(em);
         return personaDAO.save(persona);
@@ -75,14 +79,13 @@ public class PersonaSrv implements PersonaImpl {
     }
 
 
-
-    public List<Persona> finbyRolEmpresa(String rol, String em){
+    public List<Persona> finbyRolEmpresa(String rol, String em) {
         Empresa emp = empresaDao.findByNombreEmpresa(em);
         Integer id = emp.getId();
         return personaDAO.finRolEmpresa(rol, id);
     }
 
-    public Persona saveNamePer(Persona per, String em){
+    public Persona saveNamePer(Persona per, String em) {
         Empresa emp = empresaDao.findByNombreEmpresa(em);
         per.setEmpresa(emp);
         Usuario ud = per.getUsuario();

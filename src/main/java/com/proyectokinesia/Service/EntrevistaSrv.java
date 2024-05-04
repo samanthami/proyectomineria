@@ -7,6 +7,7 @@ import lombok.extern.java.Log;
 import net.sf.jasperreports.engine.JasperPrint;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -33,7 +34,7 @@ public class EntrevistaSrv  implements EntrevistaImpl {
 
     @Override
     public Entrevista findById(Integer id) {
-        return dao.findById(id);
+          return dao.findById(id).orElseGet(Entrevista::new);
     }
 
     @Override
@@ -47,13 +48,13 @@ public class EntrevistaSrv  implements EntrevistaImpl {
     }
 
     @Override
-    public List<Entrevista> findByNombreEntrevistador(String nombre) {
-        return dao.findByNombreEntrevistador(nombre);
+    public List<Entrevista> findByNombreEntrevistador(String cedula) {
+        return dao.findByCedulaEntrevistador(cedula);
     }
 
     @Override
     public List<Entrevista> findByFecha(Date fecha) {
-        return null;
+        return Collections.emptyList();
     }
 
 
