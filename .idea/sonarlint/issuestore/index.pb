@@ -78,3 +78,7 @@ m
 =src/main/java/com/proyectokinesia/controller/EmpresaCtrl.java,a/8/a816960374bd8c54f6e5d5807ee0070a96481121
 S
 #.idea/sonarlint/issuestore/index.pb,9/f/9fe84ebb15faf917b7def6236dba604453cc61e0
+p
+@src/main/java/com/proyectokinesia/Exception/CustomException.java,c/0/c08231df1440bb95c8e323dbf18997a05295d7d1
+e
+5src/main/java/com/proyectokinesia/config/WebConf.java,1/6/166141f4e20fd4b744d945f110198f217e3c0af8
