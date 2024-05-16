@@ -13,6 +13,6 @@ public interface EntrevistaImpl {
     Entrevista save (Entrevista entrevista);
     void update(Entrevista entrevista);
 
-    List<Entrevista> findByNombreEntrevistador(String nombre);
+    List<Entrevista> findByCedulaEntrevistador(String nombre);
     List<Entrevista> findByFecha(Date fecha);
 }

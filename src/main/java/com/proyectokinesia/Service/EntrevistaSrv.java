@@ -49,7 +49,7 @@ public class EntrevistaSrv  implements EntrevistaImpl {
     }
 
     @Override
-    public List<Entrevista> findByNombreEntrevistador(String cedula) {
+    public List<Entrevista> findByCedulaEntrevistador(String cedula) {
         return dao.findByCedulaEntrevistador(cedula);
     }
 
