@@ -3,6 +3,7 @@ package com.proyectokinesia.Service;
 import com.proyectokinesia.Dao.EntrevistaDao;
 import com.proyectokinesia.Entity.Entrevista;
 import com.proyectokinesia.Entity.Persona;
+import com.proyectokinesia.Exception.CustomException;
 import lombok.extern.java.Log;
 import net.sf.jasperreports.engine.JasperPrint;
 import org.springframework.stereotype.Service;
@@ -73,9 +74,13 @@ public class EntrevistaSrv  implements EntrevistaImpl {
         return dao.allentrevista(nombre);
     }
 
-    public Entrevista saveByCedula(Entrevista entrevista, String cedula){
+    public Entrevista saveByCedula(Entrevista entrevista, String cedula) throws CustomException {
         Persona pe = personaSrv.findCedula(cedula);
+        if(pe == null ){
+            throw new CustomException(String.format("Error No existe el postulante con la cedula %s", cedula) );
+        }
         entrevista.setPersonaIdpersona(pe);
+        entrevista.setCedula(cedula);
         return dao.save(entrevista);
     }
 }
