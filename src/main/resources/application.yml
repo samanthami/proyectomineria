@@ -19,7 +19,7 @@ spring:
     username: opdhbb8zbtf2n9ii
     password: m7adrnrba2dtkwka
     hikari:
-      maximum-pool-size: 2
+      maximum-pool-size: 5
 jpa:
   hibernate:
     ddl-auto: none
