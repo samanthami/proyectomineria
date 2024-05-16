@@ -1,5 +1,6 @@
 package com.proyectokinesia.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -33,7 +34,7 @@ public class Entrevista  {
     private String gestos;
 
 
-
+    @JsonIgnoreProperties
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "persona_idpersona")
     public Persona personaIdpersona;
@@ -54,16 +55,6 @@ public class Entrevista  {
     public void setGestos(String gestos) {
         this.gestos = gestos;
     }
-
-
-    public Persona getPersonaIdoersona() {
-        return personaIdpersona;
-    }
-
-    public void setPersonaIdoersona(Persona personaIdoersona) {
-        this.personaIdpersona = personaIdoersona;
-    }
-
 
 
     public Date getFechaEntrevista() {

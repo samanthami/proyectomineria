@@ -1,6 +1,7 @@
 package com.proyectokinesia.controller;
 
 import com.proyectokinesia.Entity.Entrevista;
+import com.proyectokinesia.Exception.CustomException;
 import com.proyectokinesia.Service.EntrevistaSrv;
 import com.proyectokinesia.dto.Emocion;
 import com.proyectokinesia.dto.Kinesia;
@@ -56,7 +57,7 @@ public class EntrevistaCtrl {
     }
 
     @PostMapping(value = "/entrevistaPst")
-    public Entrevista saveEntrevista(@RequestParam String cedula, @RequestBody Entrevista entrevista) {
+    public Entrevista saveEntrevista(@RequestParam String cedula, @RequestBody Entrevista entrevista) throws CustomException {
         return entrevistaSrv.saveByCedula(entrevista, cedula);
     }
 
