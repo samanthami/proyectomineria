@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -71,53 +73,58 @@ public class EntrevistaCtrl {
         int verdad = 0;
 
         Emocion emocion = null;
-        Emocion emocion1 = new Emocion("Aceptación", 0);
-        Emocion emocion2 = new Emocion("Nervioso", 0);
-        Emocion emocion3 = new Emocion("Confundido", 0);
-        Emocion emocion4 = new Emocion("Inseguro", 0);
-        Emocion emocion5 = new Emocion("Verdad", 0);
-        Emocion emocion6 = new Emocion("Mentira", 0);
+        Emocion emocion1 = Emocion.builder().nombreC("Aceptación").cantidadc(0).build();
+        Emocion emocion2 = Emocion.builder().nombreC("Nervioso").cantidadc(0).build();
+        Emocion emocion3 =Emocion.builder().nombreC("Confundido").cantidadc(0).build();
+        Emocion emocion4 = Emocion.builder().nombreC("Inseguro").cantidadc(0).build();
+        Emocion emocion5 = Emocion.builder().nombreC("Verdad").cantidadc(0).build();
+        Emocion emocion6 = Emocion.builder().nombreC("Mentira").cantidadc(0).build();
 
 
         for (String dato : kinesia.getResultados()) {
             if (dato.equals("confianza")) {
                 confianza++;
-                emocion = new Emocion("Confianza", confianza);
+                emocion = Emocion.builder().nombreC("Confianza").cantidadc(confianza).build();
             } else if (dato.equals("aceptación")) {
                 aceptacion++;
-                emocion1 = new Emocion("Aceptación", aceptacion);
+                emocion1 = Emocion.builder().nombreC("Aceptación").cantidadc(aceptacion).build();
             } else if (dato.equals("nervioso")) {
                 nervioso++;
-                emocion2 = new Emocion("Nervioso", nervioso);
+                emocion2 = Emocion.builder().nombreC("Nervioso").cantidadc(nervioso).build();
             }  else if (dato.equals("inseguro")) {
                 inseguro++;
-                emocion4 = new Emocion("Inseguro", inseguro);
+                emocion4 = Emocion.builder().nombreC("Inseguro").cantidadc(inseguro).build();
             } else if (dato.equals("verdad")) {
                 verdad++;
-                emocion5 = new Emocion("Verdad", verdad);
+                emocion5 = Emocion.builder().nombreC("Verdad").cantidadc(verdad).build();
             } else if (dato.equals("mentira")) {
                 mentira++;
-                emocion6 = new Emocion("Mentira", mentira);
+                emocion6 = Emocion.builder().nombreC("Mentira").cantidadc(mentira).build();
             }
 
         }
 
+
         List<Emocion> emociones7 = Arrays.asList(emocion, emocion1, emocion2, emocion3, emocion4, emocion5, emocion6);
-        emociones7.sort(Comparator.comparing(Emocion::getCantidadc));
+        emociones7.forEach(emocionDefined -> {
+            BigDecimal porcentaje = BigDecimal.valueOf(emocionDefined.getCantidadc()).divide(BigDecimal.valueOf(kinesia.getResultados().size()),2, RoundingMode.DOWN).multiply(new BigDecimal(100));
+            emocionDefined.setPorcentajeEmocion(porcentaje);
+        });
+        emociones7.sort(Comparator.comparing(Emocion::getCantidadc).reversed());
 
         List<Emocion> aux = new ArrayList<>();
-        for (int i = 0; i < emociones7.size(); i++) {
-            if (emociones7.get(i).getCantidadc() != 0) {
-                Emocion aux1 = new Emocion(emociones7.get(i).getNombreC(), emociones7.get(i).getCantidadc());
+        for (Emocion value : emociones7) {
+            if (value.getCantidadc() != 0) {
+                Emocion aux1 = Emocion.builder().nombreC(value.getNombreC()).porcentajeEmocion(value.getPorcentajeEmocion()).build();
                 aux.add(aux1);
             }
         }
         System.out.println(aux);
 
-        String labia = null;
+        String labia ;
         labia = "1. El usuario al momento de realizar la entrevista presentó las siguientes características\n";
-        for (int i = 0; i < aux.size(); i++) {
-            labia +=  aux.get(i).getNombreC()+ " con una frecuencia de: " + aux.get(i).getCantidadc() + "\n";
+        for (Emocion value : aux) {
+            labia += value.getNombreC() + " con una frecuencia de: " + value.getPorcentajeEmocion() + "%" + "\n";
         }
 
         Entrevista en = entrevistaSrv.findById(id);
