@@ -4,6 +4,7 @@ import com.proyectokinesia.Exception.CustomException;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.java.Log;
 import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JRParameter;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -17,6 +18,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.sql.Connection;
+import java.util.Locale;
 import java.util.Map;
 
 @Service
@@ -34,7 +36,8 @@ public class InformeSrv {
     public JasperPrint init(String reportName, Map<String, Object> params) throws  CustomException {
         JasperPrint print ;
         Connection connection = DataSourceUtils.getConnection(dataSource);
-
+        Locale locale = new Locale("es", "ES"); // Español, España
+        params.put(JRParameter.REPORT_LOCALE, locale);
         try {
             InputStream stream = this.getClass().getClassLoader().getResourceAsStream("report/" + reportName);
             print = JasperFillManager.fillReport(stream, params, connection);
