@@ -1,4 +1,6 @@
 .idea
+.idea/sonarlint
+.idea/*
 *.gradle
 build
 *.DS_Store
