@@ -1,12 +1,15 @@
 package com.proyectokinesia.Service;
 
+import com.proyectokinesia.Exception.CustomException;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.java.Log;
-import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.jdbc.datasource.DataSourceUtils;
 import org.springframework.stereotype.Service;
-
 
 import javax.sql.DataSource;
 import java.io.ByteArrayInputStream;
@@ -28,8 +31,8 @@ public class InformeSrv {
     }
 
 
-    public JasperPrint init(String reportName, Map<String, Object> params) throws JRException, IOException {
-        JasperPrint print = null;
+    public JasperPrint init(String reportName, Map<String, Object> params) throws  CustomException {
+        JasperPrint print ;
         Connection connection = DataSourceUtils.getConnection(dataSource);
 
         try {
@@ -37,7 +40,7 @@ public class InformeSrv {
             print = JasperFillManager.fillReport(stream, params, connection);
 
         } catch (Exception ex) {
-            log.info("Error al generar reporte: "+ ex.getMessage());
+            throw new CustomException( ex.getMessage());
         }
         return print;
     }

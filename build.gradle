@@ -41,9 +41,11 @@ dependencies {
 
     compileOnly group: 'jakarta.servlet', name: 'jakarta.servlet-api', version: '4.0.2'
 
-    implementation group: 'net.sf.jasperreports', name: 'jasperreports', version: '6.17.0'
-// https://mvnrepository.com/artifact/itext/itext
-    implementation 'com.lowagie:itext:2.1.7'
+
+    implementation group: 'net.sf.jasperreports', name: 'jasperreports', version: '6.21.3'
+
+// https://mvnrepository.com/artifact/com.itextpdf/itextpdf
+    implementation group: 'com.itextpdf', name: 'itextpdf', version: '5.5.13.3'
 
 
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'

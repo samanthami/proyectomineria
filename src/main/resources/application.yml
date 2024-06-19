@@ -20,6 +20,10 @@ spring:
     password: m7adrnrba2dtkwka
     hikari:
       maximum-pool-size: 5
+      idleTimeout: 120000
+      connectionTimeout: 300000
+      leakDetectionThreshold: 300000
+
 jpa:
   hibernate:
     ddl-auto: none
