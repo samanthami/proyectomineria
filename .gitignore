@@ -1,5 +1,7 @@
 .idea
 .idea/sonarlint
+.idea/sonarlint/issuestore
+tmp
 .idea/*
 *.gradle
 build
