@@ -167,10 +167,10 @@ WHERE
 			</line>
 			<staticText>
 				<reportElement x="20" y="21" width="100" height="20" uuid="1a2b372f-3aad-438a-b534-a2062257c180"/>
-				<text><![CDATA[Firmado por:]]></text>
+				<text><![CDATA[Aprobado por:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="31" y="31" width="100" height="20" uuid="efe083a4-5c05-491f-a7e7-5a9266d733fb">
+				<reportElement x="20" y="31" width="100" height="20" uuid="efe083a4-5c05-491f-a7e7-5a9266d733fb">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9da48640-2f4a-4a78-bee0-ca96a2bd76cc"/>
 				</reportElement>
 				<textElement>
