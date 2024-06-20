@@ -28,8 +28,8 @@ public class Entrevista  {
     @Column(name = "nombreentrevistador")
     private String nombreEntrevistador;
 
-    @Column(name = "cedula")
-    private String cedula;
+    @Column(name = "cedulaPsicologo")
+    private String cedulaPsicologo;
 
     private String gestos;
 
@@ -80,11 +80,11 @@ public class Entrevista  {
         this.id = id;
     }
 
-    public String getCedula() {
-        return cedula;
+    public String getCedulaPsicologo() {
+        return cedulaPsicologo;
     }
 
-    public void setCedula(String cedula) {
-        this.cedula = cedula;
+    public void setCedulaPsicologo(String cedulaPsicologo) {
+        this.cedulaPsicologo = cedulaPsicologo;
     }
 }

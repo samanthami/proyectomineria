@@ -19,7 +19,7 @@ spring:
     username: opdhbb8zbtf2n9ii
     password: m7adrnrba2dtkwka
     hikari:
-      maximum-pool-size: 5
+      maximum-pool-size: 10
       idleTimeout: 120000
       connectionTimeout: 300000
       leakDetectionThreshold: 600000

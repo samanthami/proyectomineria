@@ -80,7 +80,7 @@ public class EntrevistaSrv  implements EntrevistaImpl {
             throw new CustomException(String.format("Error No existe el postulante con la cedula %s", cedula) );
         }
         entrevista.setPersonaIdpersona(pe);
-        entrevista.setCedula(cedula);
+        entrevista.setCedulaPsicologo(cedula);
         return dao.save(entrevista);
     }
 }
