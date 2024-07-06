@@ -91,7 +91,7 @@ public class EntrevistaCtrl {
             } else if (dato.equals("nervioso")) {
                 nervioso++;
                 emocion2 = Emocion.builder().nombreC("Nervioso").cantidadc(nervioso).build();
-            }  else if (dato.equals("inseguro")) {
+            }  else if (dato.equals("inseguridad")) {
                 inseguro++;
                 emocion4 = Emocion.builder().nombreC("Inseguro").cantidadc(inseguro).build();
             } else if (dato.equals("verdad")) {
