@@ -85,7 +85,7 @@ public class EntrevistaCtrl {
             if (dato.equals("confianza")) {
                 confianza++;
                 emocion = Emocion.builder().nombreC("Confianza").cantidadc(confianza).build();
-            } else if (dato.equals("aceptación")) {
+            } else if (dato.equals("aceptacion")) {
                 aceptacion++;
                 emocion1 = Emocion.builder().nombreC("Aceptación").cantidadc(aceptacion).build();
             } else if (dato.equals("nervioso")) {
@@ -97,10 +97,7 @@ public class EntrevistaCtrl {
             } else if (dato.equals("verdad")) {
                 verdad++;
                 emocion5 = Emocion.builder().nombreC("Verdad").cantidadc(verdad).build();
-            } else if (dato.equals("mentira")) {
-                mentira++;
-                emocion6 = Emocion.builder().nombreC("Mentira").cantidadc(mentira).build();
-            }
+            } 
 
         }
 
